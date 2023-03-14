@@ -10,6 +10,9 @@ app.add_api(config.basedir / "swagger.yml")
 @app.route("/")
 def home():
     people = Person.query.all()
+    for x in people:
+        for note in x.notes:
+            print(note.id)
     return render_template("home.html", people=people)
 
 
